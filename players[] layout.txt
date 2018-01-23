@@ -1,0 +1,5 @@
+<players>
+	<playersInfo>[x]
+		<playerName>[x][0]
+		<playerHandSize>[x][1]
+		<playerHand>[x][2]

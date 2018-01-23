@@ -1,0 +1,30 @@
+.disappear {
+	display: none;
+}
+
+#playerGrid {
+	width: 60%;
+	display: grid;
+	grid-template-columns: 20% 80%;
+	float: left;
+}
+
+#remainingCardsGrid {
+	width: 40%;
+	float: right;
+	display: inline;
+}
+
+.card {
+	background-color: gray;
+	border: 1px black solid;
+	width: 20px;
+	height: 30px;
+	display: inline-block;
+	margin: 5px;
+}
+
+.playerName, .playerCards {
+	height: 45px;
+}
+

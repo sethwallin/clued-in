@@ -1,0 +1,29 @@
+clued-in notes
+
+let's employ some UX thinking and break it down by the actions that the user will need to do and all the subActions that each will require. 
+
+1. enter player names
+	add each to the table of players
+	add arrays into players[] for each
+	determine who is dealing first
+		are we trusting the user to get this right? do we want to give the opportunity to change it or select it at a later time?
+	assign empty spaces for how many cards each will have
+	warn of too many/few players
+	a done button?
+2. user enters own cards
+	goes for ANYone entering cards:
+		do these visually as well as in storage:
+			remove from pool of unassigned cards 
+			assign to category and player (originally didn't care WHO had it, but that matters for ruling out for other people)
+		loop through the mightHave arrays, removing where possible
+3. initiate a suggestion
+	who is suggesting
+	loop through players
+		pass? show?
+		if user is suggesting, prompt for card shown
+		make adjustments to cantHave and mightHave arrays
+		
+'done' button for Add Player will toggle to display: none, revealing the suggestion window, which will be a series of dropdown boxes for suggester/room/weapon/person, with it's own 'go' button.
+
+BUT FIRST the user will enter their own cards. maybe, at different times during the 'game' we make the table of remaining cards be clickable. between removing the add player and adding the suggestion window, the cards will be clickable and will be added to the table. 
+

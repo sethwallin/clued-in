@@ -2,21 +2,64 @@
 <html>
 <head>
 <title>Get Clued In</title>
-<link rel="stylesheet" type="text/stylesheet" src="cluedIn.css" />
+<link rel="stylesheet" type="text/css" href="clued-in.css" />
 </head>
 <body>
 	<h1>Clued In</h1>
 	<h3>Instructions:</h3>
 		<div id="instructions">
-			Enter player names (3 to 6), going in order of play. 
+		Enter player names (3 to 6), going in order of play and starting with the first player to be dealt a card.
 		</div>
-	<label for="players">Player Name:</label>
-	<input type="text" id="players" />
-	<button>Add Player</button>
+		<br>
+	<div id="controlsContainer">
 	
-	<div id="table">
-	
+		<div id="addPlayerFields">
+			<label for="newPlayer">Player Name:</label>
+			<input type="text" id="newPlayer" />
+			<button id="subPlayer">Add Player</button><button id="donePlayers">Done</button>
+		</div>
+
+		<div id="enterHand" class="disappear">
+		</div>
+
+		<div id="suggestWindow" class="disappear">
+			<label for="suggester">Suggesting Player:</label>
+				<select id="suggester">
+					<option value="null">--Select a Player--</option>
+				</select>
+				<br>
+			<label for="personSuggestion">Person:</label>
+				<select id="personSuggestion">
+					<option value="null">--Select a Person--</option>
+				</select>
+				<br>
+			<label for="weaponSuggestion">Weapon:</label>
+				<select id="weaponSuggestion">
+					<option value="null">--Select a Weapon--</option>
+				</select>
+				<br>
+			<label for="roomSuggestion">Room:</label>
+				<select id="roomSuggestion">
+					<option value="null">--Select a Room--</option>
+				</select>
+				<br>
+			<button id="submitSuggestion">Submit</button>
+		</div>
+		
 	</div>
-<script type="text/javascript" src="cluedIn.js"></script>
+	
+	<hr>
+	
+	
+		<div id="playerGrid">
+			<h3>Players</h3><h3>Cards</h3>
+		</div>
+		
+		<div id="remainingCardsGrid">
+		<h3>Cards Remaining</h3>
+		</div>
+
+	
+<script type="text/javascript" src="clued-in.js"></script>
 </body>
 </html>
