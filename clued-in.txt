@@ -1,0 +1,79 @@
+clued in
+
+things we need to know/track
+
+three categories of cards: room, weapon, person
+the cards you have
+how many people playing (input option for names, otherwise use player1, player2, etc.)
+who is the dealer
+what is suggested
+who shows a card
+who passes on showing a card
+
+entered by user
+
+// instruct user that player1 is the dealer. player order or who goes first doesn't matter, only if someone has more cards than another.
+
+let handArray = myCards;
+let playersArray = different players, in order around table; // count of playersArray gives number of players
+let roomArray = different possible rooms;
+let personArray = different possible people;
+let weaponArray = different possible weapons;
+let [playerName]HandArray = player's hand; // for each of the different players. empty at start.
+let [playerName]CantHaveArray = cards we know they can't have; // again, one for each of the players.
+let roomsAssigned = rooms in any players hand; // basically not caring WHO has the card, just that it can't be in the solution.
+let personsAssigned = persons in any players hand;
+let weaponsAssigned = weapons in any players hand;
+let solution = you guessed it. // we can have a standard r/w/p order with '/' as delimiters. When we get a solution we add it, then check to see if there are others. 
+
+turn () {
+	
+	user.select suggester
+	user.select suggestion // possibly prompt for each category
+	let currentPlayer = suggester + 1;
+
+	until (cardShown || currentPlayer = suggester) {
+		prompt for currentPlayer.play;
+		
+		if (currentPlayer.Pass) {
+			currentPlayer.CantHave = suggestion;
+			++currentPlayer;
+		} else if (currentPlayer.Show) {
+			cardShown = true;
+			for each category In suggetion {
+				if (currentPlayer.HasCategory) {
+					break; // at this point we basically need to exit the turn because there's nothing more we can learn. if the shower has ANY of the three cards, then it doesn't matter, there's no way to know if they are showing that card or another. 
+				} else if ([category]Assigned.HasCategory) {
+					suggestion = suggestion - thatCard;
+					if (suggestion = oneCard) {
+						currentPlayer.HasCategory;
+						confirmedCategory(categoryCard);
+						[category]Assigned.HasCategory;
+						// strike this card from any other players' mightHave lists. gonna be a loop.
+						// if the strikeout leaves a single card in a mightHave list, then it is confirmed as a card. 
+						break; // like before, knowing which card the shower is showing is the end of learning for the turn.
+					}
+				}
+			}
+
+			currentPlayer.mightHave = suggestion; 
+		}
+	}
+}
+
+the main hurdle with this so far is keeping track of each of the mightHave instances. knowing each one is important because it can lead to quickly figuring out a lot of info all at once. if alex.mightHave = plum || revolver && plum || rope and then we find out that angela has plum, we know alex has both the revolver and the rope. 
+
+we could have each mightHave be numbered, with the variable having a string that is separated into categories, separated by a '/' or something. and there would be a null character if we knew someone else already had that room/weapon/person. the mightHave instances would only change once we get confirmation of a card. 
+
+could make another function for confirmedCard. it would parse out the mightHave(s) and remove any instances of confirmedCard, checking to see if there's now just one card left in that suggestion. if there is, then we can assign that card to that player, thereby triggering another running of the confirmedCard function. 
+
+there might also be actions required for when a card is added to the solution. although, once the program has figured out a certain category, then we should in theory know where all the cards lie, so it won't make things any easier. 
+
+maybe, so the game isn't ruined, have it set up to tell us the result and hide it until we are ready. maybe with a printout of who has what. and how many turns it took. 
+
+we also need to build in the functionality for when the user is up in the game, since whomever shows, the user will be able to enter that directly.
+
+The user will enter a suggestion and player and clicking the 'go' button will invoke turn();
+
+the script will ask how the next in line is responding. maybe we're writing event-driven HTML within javasript. There should be a table display of who has what as the game progresses, with blank spaces for cards that we don't know yet.
+
