@@ -4,6 +4,7 @@ let instructions = document.querySelector('#instructions');
 let table = document.querySelector('#playerGrid');
 let players = [];
 let me;
+const handlers = [];
 
 subPlayer.addEventListener('click', addPlayer);
 donePlayers.addEventListener('click', initPlayers);
@@ -88,20 +89,27 @@ function initPlayers() {
 	document.querySelector('#addPlayerFields').classList.toggle('disappear');
 	document.querySelector('#enterHand').classList.toggle('disappear');
 	instructions.textContent = 'Please select which player you are by clicking on your name.';
-	
+
 	let names = document.querySelectorAll('.playerName');
 	names.forEach((name) => {
-		name.addEventListener('click', () => {selectSelf(name)});
+		handlers[name.id] = () => selectSelf(name);
+		name.addEventListener('click', handlers[name.id]);
+		name.classList.toggle('selectMe');
 	});
-	
+
 	//add event listeners for all the cards to be clicked. 
 }
 
 function selectSelf(name) {
 	me = name.id;
 	alert(me);
-	let names = document.querySelectorAll('.playerName');
-	names.forEach((name) => {
-		name.removeEventListener('click', () => {selectSelf(name)});
+	dropEvents();
+}
+
+function dropEvents() {
+	let drops = document.querySelectorAll('.playerName');
+	drops.forEach((drop) => {
+		drop.removeEventListener('click', handlers[drop.id]);
+		drop.classList.toggle('selectMe');
 	});
 }

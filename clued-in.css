@@ -28,3 +28,9 @@
 	height: 45px;
 }
 
+.selectMe {
+	cursor: pointer;
+	border: 1px lightblue solid;
+	border-radius: 2px;
+}
+
