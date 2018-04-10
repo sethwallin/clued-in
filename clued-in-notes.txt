@@ -16,6 +16,8 @@ let's employ some UX thinking and break it down by the actions that the user wil
 			remove from pool of unassigned cards 
 			assign to category and player (originally didn't care WHO had it, but that matters for ruling out for other people)
 		loop through the mightHave arrays, removing where possible
+
+	They first appear in the handSpace area, but we want people to have the ability to change them before submitting. There needs to be an eventListener added to put the card back. It would 
 3. initiate a suggestion
 	who is suggesting
 	loop through players
@@ -26,4 +28,6 @@ let's employ some UX thinking and break it down by the actions that the user wil
 'done' button for Add Player will toggle to display: none, revealing the suggestion window, which will be a series of dropdown boxes for suggester/room/weapon/person, with it's own 'go' button.
 
 BUT FIRST the user will enter their own cards. maybe, at different times during the 'game' we make the table of remaining cards be clickable. between removing the add player and adding the suggestion window, the cards will be clickable and will be added to the table. 
+
+
 

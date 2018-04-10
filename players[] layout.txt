@@ -3,3 +3,17 @@
 		<playerName>[x][0]
 		<playerHandSize>[x][1]
 		<playerHand>[x][2]
+		<playerMightHaves>[x][3]
+		<playerCantHave>[x][4]
+
+<suggestion>
+	<suggester>[0]
+	<suggestedPerson>[1]
+	<suggestedWeapon>[2]
+	<suggestedRoom>[3]
+
+<cardInfo>
+	<cardName>[x]
+	<cardSrc>[x + 1]
+	<cardStatus>[x + 2]
+	<cardCategory>[x + 3]

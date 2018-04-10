@@ -1,0 +1,81 @@
+Program flow:
+
+assign variables
+assign eventListeners 
+
+load cardInfo
+
+wait for user to addPlayer()
+	creates player name, card rows, and player buttons for selectSelf().
+wait for user to click Done
+
+initPlayers()
+	assign the # of cards each person gets.
+	the card row gets placeholders with class 'card'.
+	replace the add player fields with playerName buttons
+
+addEvents(.selectMe, selectSelf)
+	playerName buttons are activated to select who the user is.
+
+selectSelf(me) gets the users name, hides the playerName buttons and => allotHand()
+
+allotHand() displays <img> forEach card in user's hand, again using class 'card' so they aren't picked up in the following addEvents function.
+
+addEvents(.imgCard, addMyHand)
+	'remaining cards' area is activated for click-select
+
+addMyHand(card)
+	so long as the user's hand isn't full, gives the next available emptyCard <img> (by selecting the first element with class 'card', which would be in the hand, above the card rows) the src of the clicked card.
+
+	since it's selecting the next card by class, the class also changes.
+
+	original card is blanked out, class changes to 'card', eventListener is removed.
+
+	the newly added card in the user's hand is given onclick => putBack.
+
+putBack(card, oldCard)
+	card is the card being put back, where 'oldCard' is the place it is being put back to.
+
+	we move the src back to the oldCard, remove the card's element, revert the class on the oldCard, give it back the eventListener so that it can still be added to the hand.
+
+	finally, we add in a new <img> for the card that was put back
+
+submitHand()
+	after the user's hand has been filled, we remove the eventListeners on the remaining cards section.
+
+	select the user's card row so we know where to add the hand
+
+	then grab the newly selected user's hand, going by class 'holder', since that was assigned as each card was added.
+		forEach card in the hand, remove a placeholder from the user's card row and add in a newly created <img> with class 'card' and the src of the image.
+
+	once the whole hand has been moved down, swap the selectedHandArea with the suggestion window and update the instructions.
+
+	ALSO, mark these cards in cardInfo[x + 2] as 'assigned'.
+
+addEvents(.selectMe, selectSuggester)
+	re-enabling the selection buttons for when the user selected themselves.
+addEvents(#suggestWindow > select, suggestThing)
+	onChange of the select menus
+
+selectSuggester(name)
+	suggestion[layout] = [suggester][person][weapon][room]
+	suggestion[0] gets the name from the button.textContents where each player has a button, these being reused from when the user selects themself.
+
+suggestThing(thing)
+	match the id of the suggested item placeholder with the id of the select menu, so that the image is being loaded into the correct one, then take the value of the selected option and compare it to the ids in cardInfo that was dumped in in the beginning. cardInfo[] is a list of all card names and their img.src. THEN apply the src in the following cardInfo.element to the suggestedItemPlaceholder.
+
+	add this thing into suggestion[]
+
+submitSuggestion()
+	remove any suggestionItems that have already been assigned. toggle a bunch of visibilities/styles. activates show/pass buttongs. sets the first player to show/pass.
+
+showed()
+	if the user suggested, then obviously they know, so addEvents() to the cards of the suggestion and the user will just select one.
+
+	run through cantHaves[shower] and eliminate from suggestion
+
+	if there's only one card left in suggestion, then assign it 
+
+assignCard(card)
+	is this function capable of moving the image into the player's hand as well? that would simplify the code a lot. 
+

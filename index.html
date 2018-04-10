@@ -11,53 +11,117 @@
 		Enter player names (3 to 6), going in order of play and starting with the first player to be dealt a card.
 		</div>
 		<br>
+
 	<div id="controlsContainer">
-	
 		<div id="addPlayerFields">
 			<label for="newPlayer">Player Name:</label>
 			<input type="text" id="newPlayer" />
-			<button id="subPlayer">Add Player</button><button id="donePlayers">Done</button>
+			<button id="subPlayer" class="selectMe">Add Player</button><button id="donePlayers" class="selectMe">Done</button>
+		</div>
+
+		<div id="playerSelect" class="disappear">
 		</div>
 
 		<div id="enterHand" class="disappear">
+			<button id="submitHand">Submit Hand</button>
+		</div>
+
+		<div id="showPass" class="disappear">
+			<button id="show">Show</button>
+			<button id="pass">Pass</button>
 		</div>
 
 		<div id="suggestWindow" class="disappear">
-			<label for="suggester">Suggesting Player:</label>
-				<select id="suggester">
-					<option value="null">--Select a Player--</option>
-				</select>
-				<br>
-			<label for="personSuggestion">Person:</label>
-				<select id="personSuggestion">
-					<option value="null">--Select a Person--</option>
-				</select>
-				<br>
-			<label for="weaponSuggestion">Weapon:</label>
-				<select id="weaponSuggestion">
-					<option value="null">--Select a Weapon--</option>
-				</select>
-				<br>
-			<label for="roomSuggestion">Room:</label>
-				<select id="roomSuggestion">
-					<option value="null">--Select a Room--</option>
-				</select>
-				<br>
+			<img class="card" id="personSuggestion" alt="notYet">
+			<img class="card" id="weaponSuggestion" alt="notYet">
+			<img class="card" id="roomSuggestion" alt="notYet">
+
+			<select id="personSuggestion">
+				<option value="select">--Select a Person--</option>
+				<option value="scarlet">Ms. Scarlet</option>
+				<option value="plum">Professor Plum</option>
+				<option value="white">Mrs. White</option>
+				<option value="mustard">Colonel Mustard</option>
+				<option value="peacock">Mrs. Peacock</option>
+				<option value="green">Mr. Green</option>
+			</select>
+			<select id="weaponSuggestion">
+				<option value="select">--Select a Weapon--</option>
+				<option value="revolver">Revolver</option>
+				<option value="knife">Knife</option>
+				<option value="rope">Rope</option>
+				<option value="candlestick">Candlestick</option>
+				<option value="leadPipe">Lead Pipe</option>
+				<option value="wrench">Wrench</option>
+			</select>
+			<select id="roomSuggestion">
+				<option value="select">--Select a Room--</option>
+				<option value="hall">Hall</option>
+				<option value="ballroom">Ballroom</option>
+				<option value="billiards">Billiards Room</option>
+				<option value="dining">Dining Room</option>
+				<option value="lounge">Lounge</option>
+				<option value="library">Library</option>
+				<option value="conservatory">Conservatory</option>
+				<option value="kitchen">Kitchen</option>
+				<option value="study">Study</option>
+			</select>
 			<button id="submitSuggestion">Submit</button>
 		</div>
+
 		
+	</div>	
+		
+	<div id="remainingCardsGrid">
+		<h3 class="cardHead">Cards Remaining</h3>
+		<object type="image/png" data="cards/plum.png" class="imgCard" id="plum">
+			<param name="category" value="person"></object>
+		<object type="image/png" data="cards/scarlet.png" class="imgCard" id="scarlet">
+			<param name="category" value="person">
+		</object>
+		<object type="image/png" data="cards/mustard.png" class="imgCard" id="mustard">
+			<param name="category" value="person"></object>
+		<object type="image/png" data="cards/white.png" class="imgCard" id="white">
+			<param name="category" value="person"></object>
+		<object type="image/png" data="cards/peacock.png" class="imgCard" id="peacock">
+			<param name="category" value="person"></object>
+		<object type="image/png" data="cards/green.png" class="imgCard" id="green">
+			<param name="category" value="person"></object>
+		<object type="image/png" data="cards/revolver.png" class="imgCard" id="revolver">
+			<param name="category" value="weapon"></object>
+		<object type="image/png" data="cards/rope.png" class="imgCard" id="rope">
+			<param name="category" value="weapon"></object>
+		<object type="image/png" data="cards/wrench.png" class="imgCard" id="wrench">
+			<param name="category" value="weapon"></object>
+		<object type="image/png" data="cards/leadPipe.png" class="imgCard" id="leadPipe">
+			<param name="category" value="weapon"></object>
+		<object type="image/png" data="cards/candlestick.png" class="imgCard" id="candlestick">
+			<param name="category" value="weapon"></object>
+		<object type="image/png" data="cards/knife.png" class="imgCard" id="knife">
+			<param name="category" value="weapon"></object>
+		<object type="image/png" data="cards/hall.png" class="imgCard" id="hall">
+			<param name="category" value="room"></object>
+		<object type="image/png" data="cards/ballroom.png" class="imgCard" id="ballroom">
+		<param name="category" value="room"></object>
+		<object type="image/png" data="cards/billiards.png" class="imgCard" id="billiards">
+		<param name="category" value="room"></object>
+		<object type="image/png" data="cards/lounge.png" class="imgCard" id="lounge">
+		<param name="category" value="room"></object>
+		<object type="image/png" data="cards/conservatory.png" class="imgCard" id="conservatory">
+		<param name="category" value="room"></object>
+		<object type="image/png" data="cards/kitchen.png" class="imgCard" id="kitchen">
+		<param name="category" value="room"></object>
+		<object type="image/png" data="cards/study.png" class="imgCard" id="study">
+		<param name="category" value="room"></object>
+		<object type="image/png" data="cards/dining.png" class="imgCard" id="dining">
+		<param name="category" value="room"></object>
+		<object type="image/png" data="cards/library.png" class="imgCard" id="library">
+		<param name="category" value="room"></object>
 	</div>
-	
-	<hr>
-	
-	
-		<div id="playerGrid">
-			<h3>Players</h3><h3>Cards</h3>
-		</div>
-		
-		<div id="remainingCardsGrid">
-		<h3>Cards Remaining</h3>
-		</div>
+
+	<div id="playerGrid">
+	<h3>Players</h3><h3>Cards</h3>
+	</div>
 
 	
 <script type="text/javascript" src="clued-in.js"></script>
